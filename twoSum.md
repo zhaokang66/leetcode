@@ -11,7 +11,6 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 
 #### code:
-
 ```php
 <?php
     class Solution {
@@ -21,23 +20,42 @@ return [0, 1].
                 for($j=0;$j<count($nums);$j++) {
                     if($i!==$j&& ($nums[$i]+$nums[$j])==$target) {
                         array_push($result,$i,$j);
-                        break;
+                        break 2;
                     }
                 }
-                if(!empty($result)) {
-                    break;
-                }
             }
-            return $result;
-
+            if(!empty($result)) {
+                return $result;
+            }else {
+                return "没有匹配到";
+            }
         }
     }
     $test = new Solution();
-    var_dump($test->twoSum([2,7,11,15],9));
-
+    var_dump($test->twoSum([4,8,4,2,5],10));
 
 ```
 ### operation result
 
 Runtime: 3956 ms, faster than 5.04% of PHP online submissions for Two Sum.
 Memory Usage: 15.7 MB, less than 77.36% of PHP online submissions for Two Sum.
+
+#### other code
+```php
+<?php
+    class Solution {
+        function twoSum($nums,$target) {
+            $map = [];
+            for($i=0;$i<count($nums);$i++) {
+                $diff = $target-$nums[$i];
+                if(isset($map[$diff])) {
+                    return [$map[$diff],$i];
+                }
+                $map[$nums[$i]] = $i;
+            }
+            return "没有找到";
+        }
+    }
+    $test = new Solution();
+    var_dump($test->twoSum([4,8,4,2,5],10));
+```
