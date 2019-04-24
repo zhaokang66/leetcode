@@ -37,8 +37,8 @@ return [0, 1].
 ```
 ### operation result
 
-Runtime: 3956 ms, faster than 5.04% of PHP online submissions for Two Sum.
-Memory Usage: 15.7 MB, less than 77.36% of PHP online submissions for Two Sum.
+**Runtime**: 3956 ms, faster than 5.04% of PHP online submissions for Two Sum.  
+**Memory Usage**: 15.7 MB, less than 77.36% of PHP online submissions for Two Sum.
 
 #### other code
 ```php

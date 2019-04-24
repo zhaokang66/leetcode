@@ -5,17 +5,11 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
 ### Example:
 
-```
-Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
-Output: 7 -> 0 -> 8
-```
-Explanation: 342 + 465 = 807
 
-```php
+**Input**: (2 -> 4 -> 3) + (5 -> 6 -> 4)  
+**Output**: 7 -> 0 -> 8
 
-```
-
-
+**Explanation**: 342 + 465 = 807
 
 
 ##### other code
@@ -62,5 +56,5 @@ class Solution {
 ```
 
 #### operation result
-Runtime: 36 ms, faster than 45.76% of PHP online submissions for Add Two Numbers.
-Memory Usage: 14.9 MB, less than 6.98% of PHP online submissions for Add Two Numbers.
+**Runtime**: 36 ms, faster than 45.76% of PHP online submissions for Add Two Numbers.  
+**Memory Usage**: 14.9 MB, less than 6.98% of PHP online submissions for Add Two Numbers.
