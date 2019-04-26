@@ -10,6 +10,7 @@ Given a string s, find the longest palindromic substring in s. You may assume th
 
 **Input**: "cbbd"
 **Output**: "bb"
+> 中心扩撒解法
 
 #### code
 ```php
@@ -47,6 +48,42 @@ $test = new Solution();
 print_r($test->longestPalindrome('bbbb'));
 
 ```
+
+
+> 动态规划解法
+
+```php
+<?php
+class Solution {
+
+    function longestPalindrome($s) {
+        if (strlen($s) <= 1) return $s;
+        $res = $s[0];
+        $max = 0;
+        if ($s[0] == $s[1]) {
+            $res = substr($s,0,2);
+        }
+        for ($j = 2;$j < strlen($s);$j++) {
+            $dp[$j][$j] = true;
+            for ($i = 0;$i < $j;$i++) {
+                $dp[$i][$j] = $s[$i] == $s[$j] && ($j - $i <=2 || $dp[$i+1][$j-1]);
+               if ($dp[$i][$j] && $max < $j - $i +1) {
+                   $max = $j - $i + 1;
+                   $res = substr($s,$i,$j - $i + 1);
+               }
+           }
+        }
+        return $res;
+    }
+}
+$test = new Solution();
+print_r($test->longestPalindrome('bb'));
+```
+
+
+
+
+
 
 
 
