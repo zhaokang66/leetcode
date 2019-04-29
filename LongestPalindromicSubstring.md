@@ -8,7 +8,7 @@ Given a string s, find the longest palindromic substring in s. You may assume th
 **Note**: "aba" is also a valid answer.  
 **Example 2**:
 
-**Input**: "cbbd"
+**Input**: "cbbd"  
 **Output**: "bb"
 > 中心扩撒解法
 
