@@ -46,85 +46,62 @@ Output: "IV"
 <?php
 
    class test{
+       protected  $char_list =
+           [
+               1 => [
+                  "mid" => 'V',
+                  "num" => 'I'
+               ],
+               10 => [
+                   "mid" => 'L',
+                   "num" => 'X'
+               ],
+               100 => [
+                   "mid" => 'D',
+                   "num" => 'C'
+               ],
+               1000 => [
+                   "mid" => '',
+                   "num" => 'M'
+               ]
+           ];
        function intToRoman($num) {
            $res = array();//定义输出结果
            $multiple = 1; //定义分离出数字的位数
            while (1) {
                $temp = ($num % 10) * $multiple;
-//            array_unshift($res, c);
                $res = array_merge($this->trans($temp, $multiple), $res);
                $num = $num / 10;
                $multiple *= 10;
                if ($num < 10) break;
            }
-//        array_unshift($res, trans(intval($num) * $multiple, $multiple));
            $res = array_merge($this->trans(intval($num) * $multiple, $multiple), $res);
            return implode("",$res);
        }
        function trans($num, $mul) {
-           /*     $rome = ["I","V","X","L","C","D","M"];
-                $arab = ["1","5","10","50","100","500","1000"];*/
+           echo $num."\n";
+           echo $mul."\n";
            $res = array();
-           if ($mul == 1) {
-               $long = $num - 5;
-               if ($long >= 0 && $long < 4) {//大于5，加右
-                   $res[0] = "V";
-                   for ($i = 0; $i < $long; $i++) {
-                       array_push($res,"I");
+              $long = $num - (5 * $mul);
+               if ($long >= 0 && $long < (4 * $mul)) {//大于5，加右
+                   $res[0] = $this->char_list[$mul]["mid"];
+                   for ($i = 0; $i < ($long / $mul); $i++) {
+                       array_push($res,$this->char_list[$mul]["num"]);
                    }
-               }else if ($long < -1) {//小于5，加左
+               }else if ($long < -$mul) {//小于5，加左
                    $long = abs($long);
-                   for ($i = 0; $i < (5 - $long); $i++) {
-                       array_push($res, "I");
+                   for ($i = 0; $i < (((5 * $mul) - $long) / $mul); $i++) {
+                       array_push($res, $this->char_list[$mul]["num"]);
                    }
                }else {
-                   $res = $long == -1 ? ["I","V"] : ["I","X"];
+                   $res = $long == -$mul ? [$this->char_list[$mul]["num"], $this->char_list[$mul]["mid"]] : [$this->char_list[$mul]["num"], $this->char_list[$mul * 10]["num"]];
                }
-           }
-           else if ($mul == 10) {
-               $long = $num - 50;
-               if ($long >= 0 && $long < 40) {//大于50，加右
-                   $res[0] = "L";
-                   for ($i = 0; $i < ($long / 10); $i++) {
-                       array_push($res,"X");
-                   }
-               }else if ($long < -10) {//小于50，加左
-                   $long = abs($long);
-                   for ($i = 0; $i < ((50 - $long) / 10); $i++) {
-                       array_push($res, "X");
-                   }
-               }else {
-                   $res = $long == -10 ? ["X","L"] : ["X","C"];
-               }
-           }else if ($mul == 100) {
-               $long = $num - 500;
-               if ($long >= 0 && $long < 400) {//大于50，加右
-                   $res[0] = "D";
-                   for ($i = 0; $i < ($long / 100); $i++) {
-                       array_push($res,"C");
-                   }
-               }else if ($long < -100) {//小于50，加左
-                   $long = abs($long);
-                   for ($i = 0; $i < ((500 - $long) / 100); $i++) {
-                       array_push($res, "C");
-                   }
-               }else {
-                   $res = $long == -100 ? ["C","D"] : ["C","M"];
-               }
-           }else {
-               $long = $num - 5000;
-               if ($long < -1000) {//小于50，加左
-                   $long = abs($long);
-                   for ($i = 0; $i < ((5000 - $long) / 1000); $i++) {
-                       array_push($res, "M");
-                   }
-               }
-           }
+
            return $res;
        }
    }
    $a = new test();
-    var_dump($a->intToRoman(100));
+    var_dump($a->intToRoman(1994));
 
 
 ```
