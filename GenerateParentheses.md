@@ -13,7 +13,10 @@ For example, given n = 3, a solution set is:
 ```
 code
 ```php
-<?php
+<?php$right) {
+            $this->_gen($left, $right + 1, $num, $ret.")");
+        }
+    }
 class Solution {
     public $list = [];
     function _gen($left, $right, $num, $ret) {
@@ -24,10 +27,7 @@ class Solution {
         if ($left < $num) {
             $this->_gen($left + 1, $right, $num, $ret."(");
         }
-        if ($right < $num && $left > $right) {
-            $this->_gen($left, $right + 1, $num, $ret.")");
-        }
-    }
+        if ($right < $num && $left > 
     function generateParenthesis($n) {
         $this->_gen(0, 0, $n, "");
         return $this->list;
