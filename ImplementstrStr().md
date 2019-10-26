@@ -42,4 +42,14 @@ function strStr1($haystack, $needle) {
 }
 
 
+//另一种简单方法
+
+for ($i = 0; $i <= strlen($haystack) - strlen($needle); $i++) {
+        $str = substr($haystack, $i, strlen($needle));
+        if ($str == $needle) {
+            return $i;
+        }
+    }
+    return -1;
+
 ```
